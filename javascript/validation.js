@@ -108,3 +108,17 @@ function validateBlank(contents){
     const progressed_contents = String(contents).trim().replace(/\s/g,'');
     return progressed_contents === '' ?  false : true;
 }
+
+
+/**컨텐츠가 URL 도메읺 형식에 합당한 데이터인지 검증하는 함수
+ * 검증시에 http:// https://를 둘다 검증해준다.
+@param {String} contents explain about params with type
+@version 0.0.0 UPDATE 2024.03.15
+@returns {Boolean} True/False
+@author 조재호 <eundoe92@gmail.com>
+*/
+function validateUrlDomain(contents) {
+    const domain_check =
+      /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/gi
+    return domain_check.test(contents)
+  }
