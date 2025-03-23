@@ -97,12 +97,12 @@ function validateEmailSingle(email, domain){
 /**컨텐츠가 빈데이터인지 확인하는 유효성검사 앞뒤공간과 중간공간을 전부 체크해서 
  * 빈칸을 전부 매꾼뒤 체크함 체크한 결과값에 따라 반환
 @param {String} contents 유효성 검증 체크할 데이터
-@version 0.0.0 UPDATE 2024.02.10
+@version 0.0.0 UPDATE 2025.03.23
 @return {Boolean} True/False 데이터가 없을경우 False 
 @author 조재호 <eundoe92@gmail.com>
 */
 function validateBlank(contents){
-    if(!contents){
+    if(!contents || typeof contents === 'object' || typeof contents === 'function'){
         return false
     }
     const progressed_contents = String(contents).trim().replace(/\s/g,'');
