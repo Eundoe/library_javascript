@@ -122,3 +122,25 @@ function validateUrlDomain(contents) {
       /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/gi
     return domain_check.test(contents)
   }
+
+
+/** 모바일 또는 태블릿 체크하는 함수 모바일일경우와 아닐경우를 나눠야 할때 사용한다.
+@version 0.0.0 UPDATED 2025-04-04
+@return {Boolean} True/False
+@author 조재호 <eundoe92@gmail.com>
+*/
+  function validateMobile() {
+    return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(navigator.userAgent)
+  }
+
+
+  /**  함수에대한설명
+  @param {String} contents 체크할 단어 문장 또는 항목
+  @version 0.0.0 2025-04-10
+  @return {Boolean} True/False
+  @author 조재호 <eundoe92@gmail.com>
+  */
+  function validateEmoji(contents){
+    return /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/.test(contents)
+  }
+
