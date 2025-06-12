@@ -146,6 +146,12 @@ function validateEmoji(contents) {
   );
 }
 
+/**
+ * 두 객체가 동일한지 확인하는 함수
+ * @param {Any} a 비교할 객체
+ * @param {Any} b 비교할 객체
+ * @returns {Boolean} True/False
+ */
 function checkSameObject(a, b) {
   let r = false;
   let t = null;

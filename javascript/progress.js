@@ -127,3 +127,72 @@ function convertUtcToLocale(dateTime, localTimezone = 'Asia/Seoul') {
     timeZone: localTimezone,
   });
 }
+
+/**
+ * 객체를 깊은 복사하는 함수 객체의 타입같으것도 전부 복사함
+ * @param {Object} obj 복사할 객체
+ * @version 0.0.0 UPDATED 2025-06-12
+ * @author 조재호 <eundoe92@gmail.com>
+ * @returns {Object} 복사된 객체
+ */
+function deepCopy(obj) {
+  // 기본 타입이나 null인 경우 그대로 반환
+  if (typeof obj !== 'object' || obj === null) {
+    return obj;
+  }
+
+  // Date 객체 처리
+  if (obj instanceof Date) {
+    return new Date(obj.getTime());
+  }
+
+  // File 객체 처리
+  if (obj instanceof File) {
+    return new File([obj], obj.name, {
+      type: obj.type,
+      lastModified: obj.lastModified,
+    });
+  }
+
+  // Blob 객체 처리
+  if (obj instanceof Blob) {
+    return new Blob([obj], { type: obj.type });
+  }
+
+  // RegExp 객체 처리
+  if (obj instanceof RegExp) {
+    return new RegExp(obj.source, obj.flags);
+  }
+
+  // Map 객체 처리
+  if (obj instanceof Map) {
+    const newMap = new Map();
+    obj.forEach((value, key) => {
+      newMap.set(deepCopy(key), deepCopy(value));
+    });
+    return newMap;
+  }
+
+  // Set 객체 처리
+  if (obj instanceof Set) {
+    const newSet = new Set();
+    obj.forEach((value) => {
+      newSet.add(deepCopy(value));
+    });
+    return newSet;
+  }
+
+  // 배열 처리
+  if (Array.isArray(obj)) {
+    return obj.map((item) => deepCopy(item));
+  }
+
+  // 일반 객체 처리
+  const newObj = {};
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = deepCopy(obj[key]);
+    }
+  }
+  return newObj;
+}
