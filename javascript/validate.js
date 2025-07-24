@@ -111,24 +111,96 @@ function validEmail(v, domains = [], strict = false) {
 }
 
 /** 두 값의 데이터 비교
-@param {String|Number|Boolean|BigInt} vi 파라미터설정
-@param {String|Number|Boolean|BigInt} vii 파라미터설정
+@param {String|Number|Boolean|BigInt} vi 값1
+@param {String|Number|Boolean|BigInt} vii 값2
 @version 0.0.1 UPDATED 2025.07.24
 @return {Boolean} True(두값과 타입이 일치)/False(값또는 타입이 일치안함)
 */
 function validEqualValue(vi, vii) {
+  const VALID_TYPE_LIST = ['string', 'number', 'boolean', 'bigint'];
   const viType = typeof vi;
-  if (
-    viType !== typeof vii ||
-    (viType !== 'string' &&
-      viType !== 'number' &&
-      viType !== 'boolean' &&
-      viType !== 'bigint')
-  ) {
+
+  if (viType !== typeof vii || !VALID_TYPE_LIST.includes(viType)) {
     return false;
   }
   if (Number.isNaN(vi) || Number.isNaN(vii)) {
     return false;
   }
   return vi === vii;
+}
+
+/** Object객체/Array객체 간 값 비교 하는 함수
+@param {Object} vi 값1
+@param {Object} vii 값2
+@requires validEqualValue 함수가 반드시 필요사용시에는 같이 쓸것
+@version 0.0.1 UPDATED 2025.07.24
+@return {Boolean} True(두값과 타입이 일치)/False(값또는 타입이 일치안함)
+*/
+function validEqualObject(vi, vii) {
+  //Type check
+  const viType = typeof vi;
+  if (viType !== typeof vii || viType !== 'object') {
+    return false;
+  }
+
+  //Null check
+  if (vi === null && vii === null) {
+    return true;
+  } else if (vi === null || vii === null) {
+    return false;
+  }
+
+  //Arr check
+  const viArrCheck = Array.isArray(vi);
+  const viiArrCheck = Array.isArray(vii);
+
+  if (viArrCheck && viiArrCheck) {
+    // both Array
+    if (vi.length !== vii.length) {
+      return false;
+    }
+    for (let i = 0; i < vi.length; i++) {
+      const viItemType = typeof vi[i];
+      const viiItemType = typeof vii[i];
+      if (viItemType !== viiItemType) {
+        return false;
+      } else if (viItemType === 'object') {
+        if (!validEqualObject(vi[i], vii[i])) {
+          return false;
+        }
+      } else {
+        if (!validEqualValue(vi[i], vii[i])) {
+          return false;
+        }
+      }
+    }
+  } else if (!viArrCheck && !viiArrCheck) {
+    // both Object
+    const viKeys = Object.keys(vi);
+    const viiKeys = Object.keys(vii);
+    if (viKeys.length !== viiKeys.length) {
+      return false;
+    }
+    for (let key of viKeys) {
+      if (!Object.prototype.hasOwnProperty.call(vii, key)) {
+        return false;
+      }
+      const viItemType = typeof vi[key];
+      const viiItemType = typeof vii[key];
+      if (viItemType !== viiItemType) {
+        return false;
+      } else if (viItemType === 'object') {
+        if (!validEqualObject(vi[key], vii[key])) {
+          return false;
+        }
+      } else {
+        if (!validEqualValue(vi[key], vii[key])) {
+          return false;
+        }
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
 }
