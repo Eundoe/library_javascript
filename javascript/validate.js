@@ -46,7 +46,7 @@ function validMobile() {
 @return {Boolean} True(포맷에맞음)/False(포맷X|타입안맞음)
 @author 조재호 <eundoe92@gmail.com>
 */
-function validCellPhoneDom(v) {
+function validCellPhoneDomestic(v) {
   if (typeof v != 'string') {
     return false;
   }

@@ -55,4 +55,99 @@
   --color-green-300: #b7e4a0;
   --color-green-200: #ccf0b0;
   --color-green-100: #e0fcbf;
+
+  /* Yellow */
+  --color-yellow-dark: #ffd300;
+  --color-yellow-highlight: #ffd713;
+  --color-yellow-normal: #ffdb25;
+  --color-yellow-light: #ffffce;
+  /* Yellow-1200 */
+  --color-yellow-1200: #ffd300;
+  --color-yellow-1100: #ffd713;
+  --color-yellow-1000: #ffdb25;
+  --color-yellow-900: #ffdf38;
+  --color-yellow-800: #ffe34b;
+  --color-yellow-700: #ffe75e;
+  --color-yellow-600: #ffeb70;
+  --color-yellow-500: #ffef83;
+  --color-yellow-400: #fff396;
+  --color-yellow-300: #fff7a9;
+  --color-yellow-200: #fffbbb;
+  --color-yellow-100: #ffffce;
+
+  /* Orange */
+  --color-orange-dark: #e95900;
+  --color-orange-highlight: #eb6410;
+  --color-orange-normal: #ed7020;
+  --color-orange-light: #ffd6af;
+  /* Orange-1200 */
+  --color-orange-1200: #e95900;
+  --color-orange-1100: #eb6410;
+  --color-orange-1000: #ed7020;
+  --color-orange-900: #ef7b30;
+  --color-orange-800: #f18640;
+  --color-orange-700: #f39250;
+  --color-orange-600: #f59d5f;
+  --color-orange-500: #f7a96f;
+  --color-orange-400: #f9b47f;
+  --color-orange-300: #fbbf8f;
+  --color-orange-200: #fdcb9f;
+  --color-orange-100: #ffd6af;
+
+  /* Indigo */
+  --color-indigo-dark: #1a0069;
+  --color-indigo-highlight: #290f77;
+  --color-indigo-normal: #371e84;
+  --color-indigo-light: #bca4ff;
+  /* Indigo-1200 */
+  --color-indigo-1200: #1a0069;
+  --color-indigo-1100: #290f77;
+  --color-indigo-1000: #371e84;
+  --color-indigo-900: #462d92;
+  --color-indigo-800: #553ca0;
+  --color-indigo-700: #644bad;
+  --color-indigo-600: #7259bb;
+  --color-indigo-500: #8168c8;
+  --color-indigo-400: #9077d6;
+  --color-indigo-300: #9f86e4;
+  --color-indigo-200: #ad95f1;
+  --color-indigo-100: #bca4ff;
+
+  /* Purple */
+  --color-purple-dark: #79007d;
+  --color-purple-highlight: #841189;
+  --color-purple-normal: #902295;
+  --color-purple-light: #f7bdff;
+  /* Purple-1200 */
+  --color-purple-1200: #79007d;
+  --color-purple-1100: #841189;
+  --color-purple-1000: #902295;
+  --color-purple-900: #9b34a0;
+  --color-purple-800: #a745ac;
+  --color-purple-700: #b256b8;
+  --color-purple-600: #be67c4;
+  --color-purple-500: #c978d0;
+  --color-purple-400: #d589dc;
+  --color-purple-300: #e09be7;
+  --color-purple-200: #ecacf3;
+  --color-purple-100: #f7bdff;
+
+  /* Cyan */
+  --color-cyan-dark: #00c0eb;
+  --color-cyan-highlight: #0fc5ed;
+  --color-cyan-normal: #1fcaef;
+  --color-cyan-light: #a8f6ff;
+  /* Cyan-1200 */
+  --color-cyan-1200: #00c0eb;
+  --color-cyan-1100: #0fc5ed;
+  --color-cyan-1000: #1fcaef;
+  --color-cyan-900: #2ecff0;
+  --color-cyan-800: #3dd4f2;
+  --color-cyan-700: #4cd9f4;
+  --color-cyan-600: #5cddf6;
+  --color-cyan-500: #6be2f8;
+  --color-cyan-400: #7ae7fa;
+  --color-cyan-300: #89ecfb;
+  --color-cyan-200: #99f1fd;
+  --color-cyan-100: #a8f6ff;
 }
