@@ -15,3 +15,15 @@ async function debounceEvent(id, event, timer = 500) {
   });
   eventArray = new_arr;
 }
+
+/** 현재창을 다시 열어서 닫는 작업을 진행
+@version 0.0.1 UPDATED 2025-07-31
+*/
+async function openSelfClose() {
+  await new Promise((resolve) => {
+    window.open('', '_self');
+    resolve();
+  }).then(() => {
+    window.close();
+  });
+}
