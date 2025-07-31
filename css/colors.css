@@ -150,4 +150,23 @@
   --color-cyan-300: #89ecfb;
   --color-cyan-200: #99f1fd;
   --color-cyan-100: #a8f6ff;
+
+  /* Mono */
+  --color-mono-dark: #040404;
+  --color-mono-highlight: #1a1a1a;
+  --color-mono-normal: #303030;
+  --color-mono-light: #f4f4f4;
+  /* Mono-1200 */
+  --color-mono-1200: #040404;
+  --color-mono-1100: #1a1a1a;
+  --color-mono-1000: #303030;
+  --color-mono-900: #454545;
+  --color-mono-800: #5b5b5b;
+  --color-mono-700: #717171;
+  --color-mono-600: #878787;
+  --color-mono-500: #9d9d9d;
+  --color-mono-400: #b3b3b3;
+  --color-mono-300: #c8c8c8;
+  --color-mono-200: #dedede;
+  --color-mono-100: #f4f4f4;
 }

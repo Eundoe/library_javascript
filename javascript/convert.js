@@ -173,3 +173,60 @@ function convertCellPhoneMask(cellPhone) {
     return cellPhone;
   }
 }
+
+/** 현재있는 로컬시간을 UTC기준으로 변경해주는 함수 
+@param {String | Number} ldv 입력할 로컬 날짜
+@version 0.0.1 UPDATED 2025.07.31
+@return {Object} iso : ISO포맷으로 반환 / mil : 밀리초로 반환
+*/
+function convertLDToUD(ldv) {
+  const dateType = typeof ldv;
+  if (dateType !== 'string' && dateType !== 'number') {
+    throw new TypeError(
+      `Invalid variables type ${ldv}: ${dateType} is not ISO FORMAT or MILISECONDS.`
+    );
+  }
+  const localDate = new Date(ldv);
+  const utcMil = Date.UTC(
+    localDate.getUTCFullYear(),
+    localDate.getUTCMonth(),
+    localDate.getUTCDate(),
+    localDate.getUTCHours(),
+    localDate.getUTCMinutes(),
+    localDate.getUTCSeconds()
+  );
+  const utcISO = `${localDate.getUTCFullYear()}-${String(
+    localDate.getUTCMonth() + 1
+  ).padStart(2, '0')}-${String(localDate.getUTCDate()).padStart(
+    2,
+    '0'
+  )}T${String(localDate.getUTCHours()).padStart(2, '0')}:${String(
+    localDate.getUTCMinutes()
+  ).padStart(2, '0')}:${String(localDate.getUTCSeconds()).padStart(
+    2,
+    '0'
+  )}+00:00`;
+
+  return {
+    iso: utcISO,
+    mil: utcMil,
+  };
+}
+
+/** UTC국제시간을 한국시간으로 변환(Asia/Seoul)하여 출력
+@param {String | Number} udv 국제시간으로 받은 값
+@param {String} tz  변환할 타임존 Asia/Seoul 기본값
+@version 0.0.1 UPDATED 2025-07-31
+@return {String} 변환된 타임존 시간문자열
+*/
+function convertUDToLD(udv, tz = 'Asia/Seoul') {
+  const dateType = typeof udv;
+  if (dateType !== 'string' && dateType !== 'number') {
+    throw new TypeError(
+      `Invalid variables type ${udv}: ${dateType} is not ISO FORMAT or MILISECONDS.`
+    );
+  }
+  return new Date(udv).toLocaleString('en-US', {
+    timeZone: tz,
+  });
+}

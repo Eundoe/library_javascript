@@ -82,52 +82,6 @@ function convertNumberDigit(number, digit) {
   }
 }
 
-/** UTC타임으로 입력한값을 변경해주는함수 서버와의 통신시 UTC가 필요하면 사용
-  @param {String} time 시간 파라메터 YYYY-MM-DD HH:mm:ss등등
-  @version 0.0.0 UPDATED 2025-04-04
-  @return {String & Number} iso서식으로 반환하는값 , miliseconds방식으로 반환하는 값
-  @author 조재호 <eundoe92@gmail.com>
-  */
-function cvUtcDate(time) {
-  if (!validateBlank(time)) {
-    return time;
-  }
-  const localTz = new Date(time);
-  const utcTz = Date.UTC(
-    localTz.getUTCFullYear(),
-    localTz.getUTCMonth(),
-    localTz.getUTCDate(),
-    localTz.getUTCHours(),
-    localTz.getUTCMinutes(),
-    localTz.getUTCSeconds()
-  );
-
-  const utcResult = `${localTz.getUTCFullYear()}-${String(
-    localTz.getUTCMonth() + 1
-  ).padStart(2, '0')}-${String(localTz.getUTCDate()).padStart(2, '0')}T${String(
-    localTz.getUTCHours()
-  ).padStart(2, '0')}:${String(localTz.getUTCMinutes()).padStart(
-    2,
-    '0'
-  )}:${String(localTz.getUTCSeconds()).padStart(2, '0')}+00:00`;
-
-  return { iso: utcResult, mil: utcTz };
-}
-
-/**
- * UTC 시간 데이터를 한국 시간(Asia/Seoul)으로 변환
- * @param {string} dateTime UTC 시간
- * @param {string} localTimezone 로컬시간으로 바꿀 타임존 기본 Asia/Seoul
- * @version 0.0.0 UPDATED 2025-04-04
- * @returns {string} 변환된 한국 시간 문자열
- * @author 조재호 <eundoe92@gmail.com>
- */
-function convertUtcToLocale(dateTime, localTimezone = 'Asia/Seoul') {
-  return new Date(dateTime).toLocaleString('en-US', {
-    timeZone: localTimezone,
-  });
-}
-
 /**
  * 객체를 깊은 복사하는 함수 객체의 타입같으것도 전부 복사함
  * @param {Object} obj 복사할 객체
