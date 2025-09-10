@@ -9,7 +9,7 @@
 */
 function validEmpty(v) {
   if (typeof v !== 'string' && typeof v !== 'number') {
-    return false;
+    return true;
   }
   return String(v).replace(/\s/g, '') === '';
 }

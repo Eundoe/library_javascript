@@ -84,6 +84,7 @@ function convertNumberDigit(number, digit) {
 
 /**
  * 객체를 깊은 복사하는 함수 객체의 타입같으것도 전부 복사함
+ * structuredClone을 주로쓰되 특수 패턴에 대해서만 사용할것
  * @param {Object} obj 복사할 객체
  * @version 0.0.0 UPDATED 2025-06-12
  * @author 조재호 <eundoe92@gmail.com>
@@ -136,17 +137,5 @@ function deepCopy(obj) {
     return newSet;
   }
 
-  // 배열 처리
-  if (Array.isArray(obj)) {
-    return obj.map((item) => deepCopy(item));
-  }
-
-  // 일반 객체 처리
-  const newObj = {};
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      newObj[key] = deepCopy(obj[key]);
-    }
-  }
-  return newObj;
+  return structuredClone(obj);
 }
